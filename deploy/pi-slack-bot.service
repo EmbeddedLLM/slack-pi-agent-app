@@ -1,0 +1,41 @@
+# /etc/systemd/system/pi-slack-bot.service
+#
+#   sudo cp deploy/pi-slack-bot.service /etc/systemd/system/
+#   sudo systemctl daemon-reload
+#   sudo systemctl enable --now pi-slack-bot
+#   sudo journalctl -u pi-slack-bot -f
+#
+# pi and everything it starts (extensions, drsh) inherit this environment.
+# PATH must contain every CLI the agent needs: pi itself, and drsh for deep
+# research (its installer puts it in ~/.local/bin). Or set DRSH_BIN in .env.
+
+[Unit]
+Description=Pi agent Slack bot (slack-pi-agent-app)
+After=network-online.target
+Wants=network-online.target
+
+[Service]
+Type=simple
+User=pi-bot
+Group=pi-bot
+WorkingDirectory=/opt/pi-slack-bridge
+Environment=HOME=/home/pi-bot
+Environment=PATH=/home/pi-bot/.pi/agent/bin:/home/pi-bot/.local/bin:/usr/local/bin:/usr/bin:/bin
+Environment=NODE_ENV=production
+ExecStart=/usr/bin/node index.js
+Restart=always
+RestartSec=5
+# The bot cancels running jobs and updates their Slack messages on SIGTERM.
+TimeoutStopSec=30
+
+# Hardening. pi-bot still needs to write its home, the workspace and /tmp.
+NoNewPrivileges=true
+PrivateTmp=true
+ProtectSystem=full
+ProtectKernelTunables=true
+ProtectKernelModules=true
+ProtectControlGroups=true
+RestrictSUIDSGID=true
+
+[Install]
+WantedBy=multi-user.target

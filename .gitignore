@@ -1,0 +1,19 @@
+node_modules/
+.env
+.env.*
+!.env.example
+access.json
+*.log
+
+# docs build output
+docs/.vitepress/dist/
+docs/.vitepress/cache/
+
+# editors / OS
+.DS_Store
+Thumbs.db
+.vscode/
+.idea/
+
+# local tooling
+.claude/

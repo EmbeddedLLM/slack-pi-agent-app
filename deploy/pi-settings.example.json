@@ -1,0 +1,16 @@
+{
+  "packages": [
+    "git:github.com/EmbeddedLLM/tokenvisor-pi",
+    "npm:pi-exa",
+    "npm:pi-token-speed",
+    "npm:@juanhuttemann/pi-deep-research"
+  ],
+  "enabledModels": [
+    "TokenVisor/Qwen/Qwen3.6-35B-A3B"
+  ],
+  "compaction": {
+    "enabled": true,
+    "reserveTokens": 40000,
+    "keepRecentTokens": 30000
+  }
+}

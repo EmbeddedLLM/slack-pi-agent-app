@@ -1,0 +1,25 @@
+{
+  "_readme": "Roles: none < viewer < member < admin. Unlisted people get defaultRole. Edits apply on the next request; no restart needed. Keys starting with _ are ignored.",
+
+  "defaultRole": "none",
+  "allowGuests": false,
+
+  "roles": {
+    "_note": "Optional overrides. Leave out a role to keep its defaults (shown here).",
+    "viewer": { "tools": "read,grep,find,ls", "readUploads": false, "createFiles": false, "maxJobs": 1 },
+    "member": { "tools": "read,grep,find,ls,web_search_exa,deep_search_exa,web_fetch_exa", "readUploads": true, "createFiles": true },
+    "admin":  { "tools": "read,grep,find,ls,web_search_exa,deep_search_exa,web_fetch_exa,bash,edit,write", "readUploads": true, "createFiles": true, "cancelAny": true, "deepResearch": true },
+    "_deepResearch": "deepResearch: true lets a role use '@bot research <question>'. Only admin has it by default; add it to member to open it up."
+  },
+
+  "users": {
+    "U01AAAAAAAA": { "role": "admin",  "name": "Your name" },
+    "U02BBBBBBBB": { "role": "member", "name": "Teammate" },
+    "U03CCCCCCCC": "viewer"
+  },
+
+  "channels": {
+    "_note": "Optional: the most a role can do in a channel. Example: in #general, admins act as members.",
+    "C04DDDDDDDD": { "maxRole": "member", "name": "#general" }
+  }
+}
