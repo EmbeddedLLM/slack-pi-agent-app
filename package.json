@@ -4,6 +4,11 @@
   "description": "Self-hosted, multi-user Slack assistant powered by the pi coding agent: role-based access, file reading and generation, deep research, and secret protection.",
   "type": "module",
   "private": true,
+  "license": "Apache-2.0",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/EmbeddedLLM/slack-pi-agent-app.git"
+  },
   "main": "index.js",
   "engines": {
     "node": ">=22.15"

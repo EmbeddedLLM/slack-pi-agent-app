@@ -51,3 +51,7 @@ The code is free. A small team using a hosted model API typically spends **about
 - pi (`@earendil-works/pi-coding-agent`)
 - A model with tool calling (reference: `Qwen/Qwen3.6-35B-A3B`)
 - A Slack workspace where you can install apps
+
+## Licence
+
+[Apache License 2.0](LICENSE)
